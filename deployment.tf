@@ -209,7 +209,7 @@ resource "aws_db_instance" "rds" {
   engine_version       = "16.10"
   instance_class       = "db.t3.micro"
   db_name              = "inventario_db"
-  username             = "admin"
+  username             = "postgresuser"
   password             = "isis2503"
   skip_final_snapshot  = true
   publicly_accessible  = true
