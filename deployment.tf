@@ -206,7 +206,7 @@ resource "aws_instance" "gestor" {
 resource "aws_db_instance" "rds" {
   allocated_storage    = 10
   engine               = "postgres"
-  engine_version       = "16.2"
+  engine_version       = "16.10"
   instance_class       = "db.t3.micro"
   db_name              = "inventario_db"
   username             = "admin"
