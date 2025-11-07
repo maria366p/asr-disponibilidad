@@ -1,17 +1,19 @@
-_format_version: "3.0"
-
+_format_version: "2.1"
 services:
   - name: inventario
-    url: http://<IP_PRIVADA_INVENTARIO>:8081
+    url: http://172.31.28.241:8081/
     routes:
       - name: inventario-route
         paths: ["/inventario/"]
-        strip_path: false
-
+        strip_path: true
+    connect_timeout: 300
+    read_timeout: 300
+    write_timeout: 300
+    retries: 1
 upstreams:
   - name: inventario_upstream
     targets:
-      - target: <IP_PRIVADA_INVENTARIO>:8081
+      - target: 172.31.28.241:8081
         weight: 100
     healthchecks:
       active:
@@ -20,9 +22,4 @@ upstreams:
         timeout: 0.3
         healthy:
           interval: 5
-          successes: 1
-        unhealthy:
-          interval: 3
-          http_failures: 1
-          tcp_failures: 1
-          timeouts: 1
+
